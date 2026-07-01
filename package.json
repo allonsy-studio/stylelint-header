@@ -2,7 +2,7 @@
 	"name": "stylelint-header",
 	"version": "3.0.0",
 	"description": "A stylelint plugin that checks for a file header.",
-	"license": "Apache-2.0",
+	"license": "MPL-2.0",
 	"author": "Cassondra Roberts <castastrophe@users.noreply.github.com> (https://allons-y.llc)",
 	"repository": {
 		"type": "git",

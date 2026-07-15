@@ -1,3 +1,6 @@
+<!-- weaver:banner:START -->
+<!-- weaver:banner:END -->
+
 <h1 align="center">stylelint-header</h1>
 <p align="center">
   <b>Enforce a header comment on every stylesheet.</b>
@@ -131,13 +134,18 @@ Contributions are welcome — see [CONTRIBUTING.md](./CONTRIBUTING.md) for the f
 
 ## License
 
-[Apache 2.0](./LICENSE) © [Cassondra Roberts](https://allons-y.llc)
+[Apache 2.0](./LICENSE) © [Cassondra Roberts](https://allons-y.studio)
 
+<!-- weaver:funding:START -->
 ## Funding ☕️
 
 If you find this plugin useful and would like to buy me a coffee/beer as a small thank you, I would greatly appreciate it! Funding links are available in the GitHub UI for this repo.
 
 <a href="https://www.buymeacoffee.com/castastrophe" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+<!-- weaver:funding:END -->
+
+<!-- weaver:footer:START -->
+<!-- weaver:footer:END -->
 
 [github-image]: https://github.com/castastrophe/stylelint-header/actions/workflows/testing.yml/badge.svg?branch=main
 [github-url]: https://github.com/castastrophe/stylelint-header/actions/workflows/testing.yml

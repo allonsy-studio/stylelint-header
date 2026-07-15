@@ -1,3 +1,6 @@
+<!-- weaver:banner:START -->
+<!-- weaver:banner:END -->
+
 <h1 align="center">stylelint-header</h1>
 <p align="center">
   <b>Enforce a header comment on every stylesheet.</b>

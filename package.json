@@ -1,32 +1,50 @@
 {
-	"name": "stylelint-header",
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"name": "@allons-y/stylelint-header",
 	"version": "3.0.0",
 	"description": "A stylelint plugin that checks for a file header.",
-	"license": "Apache-2.0",
+	"license": "MPL-2.0",
 	"author": "Cassondra Roberts <castastrophe@users.noreply.github.com> (https://allons-y.studio)",
+	"funding": [
+		{
+			"type": "github",
+			"url": " https://github.com/sponsors/castastrophe"
+		},
+		{
+			"type": "buymeacoffee",
+			"url": "https://www.buymeacoffee.com/castastrophe"
+		}
+	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/castastrophe/stylelint-header.git"
+		"url": "git+https://github.com/allonsy-studio/stylelint-header.git"
 	},
 	"bugs": {
-		"url": "https://github.com/castastrophe/stylelint-header/issues"
+		"url": "https://github.com/allonsy-studio/stylelint-header/issues"
 	},
 	"type": "module",
 	"exports": "./index.js",
 	"module": "index.js",
 	"files": [
 		"index.js",
-		"!test/*"
+		"!test/*",
+		"README.md",
+		"CHANGELOG.md",
+		"package.json",
+		"LICENSE"
 	],
 	"scripts": {
+		"changeset": "changeset",
 		"coverage": "yarn test --coverage --coverageReporters=cobertura",
-		"format": "prettier --write . && prettier-package-json --write",
-		"postinstall": "husky || true",
-		"lint": "eslint .",
-		"prepack": "pinst --disable",
+		"format": "yarn lint --fix",
+		"lint": "eslint --no-error-on-unmatched-pattern --no-warn-ignored --cache '**/*'",
 		"postpack": "pinst --enable",
+		"prepack": "pinst --disable",
+		"prepare": "husky && envoy || true",
 		"prepublish": "yarn test",
-		"release": "semantic-release",
 		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
 		"watch": "yarn test --watch"
 	},
@@ -38,24 +56,27 @@
 		"stylelint": "16.x || 17.x"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "20.5.2",
-		"@commitlint/config-conventional": "20.5.0",
-		"@semantic-release/changelog": "6.0.3",
-		"@semantic-release/commit-analyzer": "13.0.1",
-		"@semantic-release/git": "10.0.1",
-		"@semantic-release/github": "12.0.6",
-		"@semantic-release/npm": "13.1.5",
-		"@semantic-release/release-notes-generator": "14.1.0",
+		"@allons-y/envoy": "^1.1.0",
+		"@changesets/cli": "^2.31.0",
+		"@changesets/get-github-info": "^0.8.0",
+		"@eslint/compat": "^1.4.1",
+		"@eslint/js": "^10.0.1",
+		"@eslint/json": "^1.2.0",
+		"@eslint/markdown": "^8.0.2",
+		"@stylistic/eslint-plugin": "^2.13.0",
 		"cross-env": "10.1.0",
-		"eslint": "10.2.1",
+		"eslint": "^10.4.1",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-jest": "^29.15.4",
+		"eslint-plugin-jsonc": "^3.2.0",
+		"eslint-plugin-node": "^11.1.0",
+		"globals": "^17.6.0",
 		"husky": "9.1.7",
 		"jest": "30.3.0",
 		"jest-preset-stylelint": "9.1.0",
-		"lint-staged": "16.4.0",
+		"lint-staged": "^17.0.4",
 		"pinst": "3.0.0",
-		"prettier": "3.8.3",
-		"prettier-package-json": "2.8.0",
-		"semantic-release": "25.0.3",
+		"prettier": "^3.8.3",
 		"stylelint": "17.9.1"
 	},
 	"keywords": [
@@ -68,22 +89,15 @@
 	"engines": {
 		"node": ">=24"
 	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org/"
-	},
-	"funding": [
-		{
-			"type": "github",
-			"url": " https://github.com/sponsors/castastrophe"
-		},
-		{
-			"type": "buymeacoffee",
-			"url": "https://www.buymeacoffee.com/castastrophe"
-		}
-	],
 	"jest": {
 		"preset": "jest-preset-stylelint"
 	},
-	"packageManager": "yarn@4.14.1"
+	"lint-staged": {
+		"*": [
+			"eslint --fix --format stylish",
+			"prettier --write --ignore-unknown --no-error-on-unmatched-pattern --no-warn-ignored"
+		],
+		".github/renovate.json": "npx --yes --package renovate -- renovate-config-validator --strict"
+	},
+	"packageManager": "yarn@4.17.1"
 }

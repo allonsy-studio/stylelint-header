@@ -2,63 +2,71 @@ name: Release
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
-defaults:
-  run:
-    shell: bash
+permissions:
+  contents: write # push tags + create the GitHub release
+  pull-requests: write # changesets opens the "Version Packages" PR
+  id-token: write # OIDC token for npm trusted publishing
+
+env:
+  GH_TOKEN: ${{ github.token }}
 
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write # Required for OIDC
-      contents: write # to create release tags (cycjimmy/semantic-release-action)
-      issues: write # to post release that resolves an issue
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    strategy:
-      matrix:
-        node-version:
-          - 24
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
-          persist-credentials: false
+          # Full history + tags to detect prior releases, and persist the
+          # PAT so the publish step can push tags without re-auth.
+          fetch-depth: 0
 
-      - name: Enable Corepack
+      - name: Enable corepack
         run: corepack enable
 
-      - name: Use Node LTS version
-        uses: actions/setup-node@v6
+      - name: Setup Node
+        uses: actions/setup-node@v7
         with:
+          node-version-file: .nvmrc
           cache: yarn
-          node-version: ${{ matrix.node-version }}
-          registry-url: "https://registry.npmjs.org"
-
-      ## --- YARN CACHE --- ##
-      - name: Check for cached dependencies
-        continue-on-error: true
-        id: cache-dependencies
-        uses: actions/cache@v5
-        with:
-          path: |
-            .cache/yarn
-            node_modules
-          key: ubuntu-latest-node${{ matrix.node-version }}-${{ hashFiles('yarn.lock') }}
 
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Semantic release
-        uses: cycjimmy/semantic-release-action@v6.0.0
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: Cassondra Roberts
-          GIT_AUTHOR_EMAIL: castastrophe@users.noreply.github.com
-          GIT_COMMITTER_NAME: Cassondra Roberts
-          GIT_COMMITTER_EMAIL: castastrophe@users.noreply.github.com
+      - name: Update npm for OIDC trusted publishing
+        run: npm install --global npm@latest
+
+      - name: Version
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: yarn changeset version
+          title: "chore(release): version packages"
+          commit: "chore(release): version packages"
+
+      # Runs on the push that merges the version PR. The npm and tag checks
+      # are independent so the step is a safe no-op on every other push.
+      - name: Publish
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: |
+          PKG="$(node -p "require('./package.json').name")"
+          VERSION="$(node -p "require('./package.json').version")"
+          TAG="v${VERSION}"
+
+          # Publish to npm via OIDC (no token)
+          npm view "${PKG}@${VERSION}" version >/dev/null 2>&1 \
+              || npm publish --access public --provenance
+
+          # Tag the release, unless this version is already tagged.
+          if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
+              echo "${TAG} already tagged."
+          else
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git tag "${TAG}"
+              git push origin "${TAG}"
+              gh release create "${TAG}" --title "${TAG}" --generate-notes
+          fi

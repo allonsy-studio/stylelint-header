@@ -20,15 +20,12 @@
     <a href="https://github.com/allonsy-studio/stylelint-header/actions/workflows/testing.yml">
       <img src="https://github.com/allonsy-studio/stylelint-header/actions/workflows/testing.yml/badge.svg?branch=main" alt="Tests" height="20" />
     </a>
-
     <a href="https://www.npmjs.com/package/@allons-y/stylelint-header">
       <img src="https://img.shields.io/npm/v/@allons-y/stylelint-header.svg" alt="NPM version" height="20" />
     </a>
-
     <a href="https://github.com/allonsy-studio/stylelint-header/blob/main/LICENSE">
       <img src="https://img.shields.io/github/license/allonsy-studio/stylelint-header.svg" alt="License" height="20" />
     </a>
-
     <a href="https://allons-y.studio">
       <img src="https://github.com/allonsy-studio/.github/blob/main/assets/svg/badge.svg" alt="Brought to you by Allons-y Studio" height="20" />
     </a>

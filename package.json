@@ -45,6 +45,7 @@
 		"prepack": "pinst --disable",
 		"prepare": "husky && envoy || true",
 		"prepublish": "yarn test",
+		"release:version": "changeset version && node scripts/stamp-changelog-date.js",
 		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
 		"watch": "yarn test --watch"
 	},

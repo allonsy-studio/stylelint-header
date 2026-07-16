@@ -133,7 +133,7 @@ When `true`, generated headers begin with `/*` rather than `/*!`. The `/*!` pref
 ## Requirements
 
 - Node.js >= 24
-- stylelint 16.x or 17.x
+- stylelint 17.x
 
 ## Contributing
 

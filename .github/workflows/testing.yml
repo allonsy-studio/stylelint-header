@@ -27,7 +27,6 @@ jobs:
         node-version:
           - 24
         stylelint-version:
-          - 16
           - 17
     runs-on: ${{ matrix.system }}
     name: Stylelint v${{ matrix.stylelint-version }} | ${{ matrix.system }} | node v${{ matrix.node-version }}
@@ -91,7 +90,7 @@ jobs:
           path: |
             .cache/yarn
             node_modules
-          key: ubuntu-latest-node22-stylelint16-${{ hashFiles('yarn.lock') }}
+          key: ubuntu-latest-node22-stylelint17-${{ hashFiles('yarn.lock') }}
 
       - name: Install dependencies
         run: yarn install --immutable

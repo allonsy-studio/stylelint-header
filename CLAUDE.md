@@ -17,7 +17,7 @@ and prepends it on `--fix`. The entire implementation lives in `index.js`.
 - `yarn lint` — ESLint (flat config) across all files; `yarn format` runs it with `--fix`.
 - `yarn changeset` — record a changeset for release (see Releases below).
 
-Requires Node >= 24 and Yarn 4 (Corepack). CI matrix tests stylelint 16 and 17 on macOS/Ubuntu/Windows.
+Requires Node >= 24 and Yarn 4 (Corepack). CI matrix tests stylelint 17 on macOS/Ubuntu/Windows.
 
 ## Architecture
 

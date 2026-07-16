@@ -49,7 +49,7 @@ __metadata:
     string-similarity: "npm:4.0.4"
     stylelint: "npm:17.9.1"
   peerDependencies:
-    stylelint: 16.x || 17.x
+    stylelint: 17.x
   languageName: unknown
   linkType: soft
 

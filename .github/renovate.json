@@ -7,20 +7,20 @@
 		"group:githubArtifactActions"
 	],
 	"labels": [],
+	"lockFileMaintenance": {
+		"enabled": true,
+		"extends": ["schedule:monthly"]
+	},
 	"packageRules": [
 		{
 			"matchDatasources": ["npm"],
 			"minimumReleaseAge": "1 month"
 		},
 		{
-			"groupName": "commitlint ecosystem",
-			"matchPackageNames": ["commitlint", "@commitlint/*"]
+			"groupName": "changesets ecosystem",
+			"matchPackageNames": ["@changesets/*"]
 		}
 	],
 	"rebaseWhen": "behind-base-branch",
-	"reviewers": ["castastrophe"],
-	"lockFileMaintenance": {
-		"enabled": true,
-		"extends": ["schedule:monthly"]
-	}
+	"reviewers": ["castastrophe"]
 }

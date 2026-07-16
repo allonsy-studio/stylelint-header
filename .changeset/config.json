@@ -1,0 +1,12 @@
+{
+	"$schema": "https://unpkg.com/@changesets/config@3.1.4/schema.json",
+	"access": "public",
+	"baseBranch": "main",
+	"changelog": [
+		"./changelog.js",
+		{
+			"maintainers": ["castastrophe"],
+			"repo": "allonsy-studio/stylelint-header"
+		}
+	]
+}

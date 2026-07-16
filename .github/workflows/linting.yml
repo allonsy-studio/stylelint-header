@@ -1,0 +1,45 @@
+name: Linting
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Least privilege by default; jobs opt into the extra scopes they need.
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    # reviewdog posts inline review comments and a check run.
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      # Lint with the project's flat config (eslint.config.js) and surface
+      # findings as inline PR review comments via reviewdog.
+      - name: Run eslint via reviewdog
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          fail_level: error
+          eslint_flags: "."

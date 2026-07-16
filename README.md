@@ -16,11 +16,14 @@
 <p align="center"><b>Enforce a header comment on every stylesheet.</b></p>
 
 <p align="center">
-  <a href="https://github.com/allonsy-studio/stylelint-header/actions/workflows/testing.yml">
-    <img src="https://github.com/allonsy-studio/stylelint-header/actions/workflows/testing.yml/badge.svg?branch=main" alt="Tests" height="20" />
-  </a>
   <a href="https://www.npmjs.com/package/@allons-y/stylelint-header">
     <img src="https://img.shields.io/npm/v/@allons-y/stylelint-header.svg" alt="NPM version" height="20" />
+  </a>
+  <a href="https://www.npmjs.com/package/@allons-y/stylelint-header">
+    <img src="https://img.shields.io/npm/dw/@allons-y/stylelint-header.svg" alt="NPM downloads" height="20" />
+  </a>
+  <a href="https://github.com/allonsy-studio/stylelint-header/actions/workflows/testing.yml">
+    <img src="https://github.com/allonsy-studio/stylelint-header/actions/workflows/testing.yml/badge.svg?branch=main" alt="Tests" height="20" />
   </a>
   <a href="https://github.com/allonsy-studio/stylelint-header/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/allonsy-studio/stylelint-header.svg" alt="License" height="20" />

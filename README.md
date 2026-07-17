@@ -49,10 +49,10 @@ Copyright and licence headers are easy to add and easy to forget. A pre-commit l
 ## Installation
 
 ```sh
-yarn add --dev stylelint-header
-npm install --save-dev stylelint-header
-pnpm add --save-dev stylelint-header
-bun add --dev stylelint-header
+yarn add --dev @allons-y/stylelint-header
+npm install --save-dev @allons-y/stylelint-header
+pnpm add --save-dev @allons-y/stylelint-header
+bun add --dev @allons-y/stylelint-header
 ```
 
 ## Usage
@@ -63,7 +63,7 @@ Add the plugin to your stylelint config and enable the `header/header` rule, pas
 
 ```json
 {
-	"plugins": ["stylelint-header"],
+	"plugins": ["@allons-y/stylelint-header"],
 	"rules": {
 		"header/header": ["./COPYRIGHT"]
 	}
@@ -74,7 +74,7 @@ Add the plugin to your stylelint config and enable the `header/header` rule, pas
 
 ```js
 {
-  "plugins": ["stylelint-header"],
+  "plugins": ["@allons-y/stylelint-header"],
   "rules": {
     "header/header": [
       "Copyright <%= YEAR %>. <%= company %>",

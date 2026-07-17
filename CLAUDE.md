@@ -38,7 +38,7 @@ Requires Node >= 24 and Yarn 4 (Corepack). CI matrix tests stylelint 17 on macOS
    and whitespace from both sides. A score `>= nonMatchingTolerance` (default 0.98)
    counts as found — this is what lets year bumps and cosmetic edits pass.
 5. **Fix or report.** If not found and `context.fix`, prepend the header (each line
-   prefixed ` * `) with `raws.left` of `!\n` (the `/*!` minifier-safe prefix) unless
+   prefixed `*`) with `raws.left` of `!\n` (the `/*!` minifier-safe prefix) unless
    `isRemovable` is true, then push blank lines before the first node. Otherwise
    `report()` the `rejected` message.
 
@@ -51,8 +51,9 @@ Options: `nonMatchingTolerance` (0–1), `templateVariables` (object), `isRemova
 `testRule` helper — each block is a config with `accept`/`reject` cases, and `fix: true`
 blocks assert the `fixed` output. Fixtures in `test/` are the CSS inputs/outputs
 (`fail.css`, `fixed.css`, `pass.css`, `multi-line.css`, `*-removable.css`) plus
-`input.txt` (a template file) and `COPYRIGHT` (multi-line template). When changing
-fix behavior, update the corresponding `fixed*.css` fixture.
+`input.txt` (a template file). `COPYRIGHT` at the repo root is the multi-line
+template fixture. When changing fix behavior, update the corresponding
+`fixed*.css` fixture.
 
 ## Releases
 
@@ -61,8 +62,22 @@ semantic-release. Add a changeset (`yarn changeset`) for any user-facing change;
 `.changeset/changelog.js` is a custom changelog formatter. `.github/workflows/release.yml`
 handles publishing to npm.
 
+## Commits & pull requests
+
+- Conventional Commits: `<type>(<optional-scope>): <imperative subject>` —
+  lowercase, no trailing period (e.g. `fix: handle empty template file`).
+- Changelogs come from changesets, not commit bodies, so keep commits small and
+  focused; subject plus a short body is enough.
+- Do NOT add "Generated with Claude Code" / Co-Authored-By footers.
+- PRs are squash-merged with the PR title as the commit subject, so PR titles
+  must also follow Conventional Commits.
+- Fill in `.github/PULL_REQUEST_TEMPLATE.md`: description, linked issue (PRs
+  must relate to an open issue), how it was tested, and change-type checkboxes.
+
 ## Conventions
 
 - ESM only (`"type": "module"`), single default export.
 - Pre-commit runs husky + lint-staged (ESLint + Prettier on staged files).
 - README badges/banner between `weaver:*` markers are auto-generated — do not hand-edit.
+- Keep code self-documenting; when a comment is warranted, keep it brief and
+  explain only the _why_ that the code can't show.

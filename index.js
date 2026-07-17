@@ -17,7 +17,7 @@ const messages = ruleMessages(ruleName, {
 });
 
 const meta = {
-	url: "https://github.com/castastrophe/stylelint-header/blob/main/README.md",
+	url: "https://github.com/allonsy-studio/stylelint-header/blob/main/README.md",
 };
 
 /**

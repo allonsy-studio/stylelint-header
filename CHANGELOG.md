@@ -1,5 +1,11 @@
 # Change log
 
+## 4.0.2 (2026-07-17)
+
+### Patch Changes
+
+- Use the scoped package name `@allons-y/stylelint-header` in the README install commands and stylelint `plugins` config examples. The bare `stylelint-header` name would fail to install and leave stylelint unable to resolve the plugin now that the package lives under the allons-y org. ([#285](https://github.com/allonsy-studio/stylelint-header/pull/285))
+
 ## 4.0.1 (2026-07-17)
 
 ### Patch Changes

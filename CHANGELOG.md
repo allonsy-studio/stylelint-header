@@ -1,5 +1,11 @@
 # Change log
 
+## 4.0.1 (2026-07-17)
+
+### Patch Changes
+
+- Point the rule's `meta.url` at the repo's new home under allonsy-studio so documentation links in stylelint problem output resolve instead of redirecting through the old castastrophe namespace. ([#282](https://github.com/allonsy-studio/stylelint-header/pull/282))
+
 ## 4.0.0 (2026-04-29)
 
 ### Major Changes

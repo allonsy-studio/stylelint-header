@@ -4,7 +4,7 @@
 		"registry": "https://registry.npmjs.org/"
 	},
 	"name": "@allons-y/stylelint-header",
-	"version": "4.0.1",
+	"version": "4.0.2",
 	"description": "A stylelint plugin that checks for a file header.",
 	"license": "MPL-2.0",
 	"author": "Cassondra Roberts <castastrophe@users.noreply.github.com> (https://allons-y.studio)",

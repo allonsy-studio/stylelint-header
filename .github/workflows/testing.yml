@@ -32,28 +32,16 @@ jobs:
     name: Stylelint v${{ matrix.stylelint-version }} | ${{ matrix.system }} | node v${{ matrix.node-version }}
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Enable Corepack
         run: corepack enable
 
       - name: Use Node LTS version
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           cache: yarn
           node-version: ${{ matrix.node-version}}
-
-      ## --- YARN CACHE --- ##
-      - name: Check for cached dependencies
-        continue-on-error: true
-        id: cache-dependencies
-        uses: actions/cache@v5
-        with:
-          path: |
-            .cache/yarn
-            node_modules
-          key: ${{ matrix.system }}-node${{ matrix.node-version }}-stylelint${{ matrix.stylelint-version }}-${{ hashFiles('yarn.lock') }}
-
       - name: Install dependencies
         run: yarn install --immutable
 
@@ -70,27 +58,16 @@ jobs:
     name: Coverage reporting
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Enable Corepack
         run: corepack enable
 
       - name: Use Node LTS version
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
+          node-version-file: .nvmrc
           cache: yarn
-          node-version: 24
-
-      ## --- YARN CACHE --- ##
-      - name: Check for cached dependencies
-        continue-on-error: true
-        id: cache-dependencies
-        uses: actions/cache@v5
-        with:
-          path: |
-            .cache/yarn
-            node_modules
-          key: ubuntu-latest-node22-stylelint17-${{ hashFiles('yarn.lock') }}
 
       - name: Install dependencies
         run: yarn install --immutable

@@ -8,12 +8,12 @@ and prepends it on `--fix`. The entire implementation lives in `index.js`.
 
 ## Commands
 
-- `yarn test` — run the Jest suite (ESM via `NODE_OPTIONS=--experimental-vm-modules`, `jest-preset-stylelint`).
-- `yarn test -t "<description>"` — run a single case by its `testRule` `description` string.
-- `yarn watch` — Jest in watch mode.
-- `yarn coverage` — Jest with cobertura coverage output (CI enforces 80% line / 100% branch thresholds).
-- `yarn lint` — ESLint (flat config) across all files; `yarn format` runs it with `--fix`.
-- `yarn changeset` — record a changeset for release (see Releases below).
+- `yarn test`: run the Jest suite (ESM via `NODE_OPTIONS=--experimental-vm-modules`, `jest-preset-stylelint`).
+- `yarn test -t "<description>"`: run a single case by its `testRule` `description` string.
+- `yarn watch`: Jest in watch mode.
+- `yarn coverage`: Jest with cobertura coverage output (CI enforces 80% line / 100% branch thresholds).
+- `yarn lint`: ESLint (flat config) across all files; `yarn format` runs it with `--fix`.
+- `yarn changeset`: record a changeset for release (see Releases below).
 
 Requires Node >= 24 and Yarn 4 (Corepack). CI matrix tests stylelint 17 on macOS/Ubuntu/Windows.
 
@@ -34,7 +34,7 @@ Requires Node >= 24 and Yarn 4 (Corepack). CI matrix tests stylelint 17 on macOS
 4. **Fuzzy match.** `root.walkComments` compares each comment against the rendered
    header with `string-similarity`'s `compareTwoStrings`, after stripping asterisks
    and whitespace from both sides. A score `>= nonMatchingTolerance` (default 0.98)
-   counts as found — this is what lets year bumps and cosmetic edits pass.
+   counts as found: this is what lets year bumps and cosmetic edits pass.
 5. **Fix or report.** If not found and `context.fix`, prepend the header (each line
    prefixed `*`) with `raws.left` of `!\n` (the `/*!` minifier-safe prefix) unless
    `isRemovable` is true, then push blank lines before the first node. Otherwise
@@ -46,7 +46,7 @@ Options: `nonMatchingTolerance` (0–1), `templateVariables` (object), `isRemova
 ## Tests
 
 `test/stylelint-header.test.js` drives the rule through `jest-preset-stylelint`'s
-`testRule` helper — each block is a config with `accept`/`reject` cases, and `fix: true`
+`testRule` helper: each block is a config with `accept`/`reject` cases, and `fix: true`
 blocks assert the `fixed` output. Fixtures in `test/` are the CSS inputs/outputs
 (`fail.css`, `fixed.css`, `pass.css`, `multi-line.css`, `*-removable.css`) plus
 `input.txt` (a template file). `COPYRIGHT` at the repo root is the multi-line
@@ -62,7 +62,7 @@ handles publishing to npm.
 
 ## Commits & pull requests
 
-- Conventional Commits: `<type>(<optional-scope>): <imperative subject>` —
+- Conventional Commits: `<type>(<optional-scope>): <imperative subject>`,
   lowercase, no trailing period (e.g. `fix: handle empty template file`).
 - Changelogs come from changesets, not commit bodies, so keep commits small and
   focused; subject plus a short body is enough.
@@ -77,6 +77,12 @@ handles publishing to npm.
 
 - ESM only (`"type": "module"`), single default export.
 - Pre-commit runs husky + lint-staged (ESLint + Prettier on staged files).
-- README badges/banner between `weaver:*` markers are auto-generated — do not hand-edit.
+- README badges/banner between `weaver:*` markers are auto-generated: do not hand-edit.
 - Keep code self-documenting; when a comment is warranted, keep it brief and
   explain only the _why_ that the code can't show.
+
+## Prose style
+
+Prose in this repo (README, commit bodies, PR descriptions) follows the
+[studio style guide](https://github.com/allonsy-studio/.github/blob/main/AGENTS.md#style-guide):
+sentence-case headings, `&` over "and", `:` over em dashes.

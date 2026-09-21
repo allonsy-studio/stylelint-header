@@ -77,7 +77,7 @@ handles publishing to npm.
 
 - ESM only (`"type": "module"`), single default export.
 - Pre-commit runs husky + lint-staged (ESLint + Prettier on staged files).
-- README badges/banner between `weaver:*` markers are auto-generated: do not hand-edit.
+- README badges/banner between `weaver:*` markers are auto-generated; do not hand-edit.
 - Keep code self-documenting; when a comment is warranted, keep it brief and
   explain only the _why_ that the code can't show.
 

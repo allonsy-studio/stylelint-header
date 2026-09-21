@@ -1,6 +1,4 @@
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+# stylelint-header
 
 ## What this is
 
@@ -68,7 +66,8 @@ handles publishing to npm.
   lowercase, no trailing period (e.g. `fix: handle empty template file`).
 - Changelogs come from changesets, not commit bodies, so keep commits small and
   focused; subject plus a short body is enough.
-- Do NOT add "Generated with Claude Code" / Co-Authored-By footers.
+- Never add AI attribution to a commit or a PR: no `Co-Authored-By` trailer, no
+  "Generated with …" footer, no session URLs.
 - PRs are squash-merged with the PR title as the commit subject, so PR titles
   must also follow Conventional Commits.
 - Fill in `.github/PULL_REQUEST_TEMPLATE.md`: description, linked issue (PRs

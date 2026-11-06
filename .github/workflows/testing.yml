@@ -26,11 +26,12 @@ jobs:
           - ubuntu-latest
           - windows-latest
         node-version:
+          - 26
           - 24
         stylelint-version:
           - 17
     runs-on: ${{ matrix.system }}
-    name: Stylelint v${{ matrix.stylelint-version }} | ${{ matrix.system }} | node v${{ matrix.node-version }}
+    name: CI (node${{ matrix.node-version }}${{ startsWith(matrix.system, 'windows') && ', windows' || startsWith(matrix.system, 'macos') && ', macos' || '' }})
     steps:
       - name: Check out code
         uses: actions/checkout@v7

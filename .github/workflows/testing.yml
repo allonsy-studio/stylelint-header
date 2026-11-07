@@ -31,7 +31,7 @@ jobs:
         stylelint-version:
           - 17
     runs-on: ${{ matrix.system }}
-    name: CI (node${{ matrix.node-version }}${{ startsWith(matrix.system, 'windows') && ', windows' || startsWith(matrix.system, 'macos') && ', macos' || '' }})
+    name: Stylelint v${{ matrix.stylelint-version }} | ${{ matrix.system }} | node v${{ matrix.node-version }}
     steps:
       - name: Check out code
         uses: actions/checkout@v7

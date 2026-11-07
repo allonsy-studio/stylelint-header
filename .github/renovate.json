@@ -19,6 +19,11 @@
 		{
 			"groupName": "changesets ecosystem",
 			"matchPackageNames": ["@changesets/*"]
+		},
+		{
+			"description": "Hold the Changesets CLI at 2 while the release workflow uses changesets/action@v1, which reads CLI 2 output. Move both to 3 together, with changesets/action@v2.",
+			"matchPackageNames": ["@changesets/cli"],
+			"allowedVersions": "<3"
 		}
 	],
 	"rebaseWhen": "behind-base-branch",

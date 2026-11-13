@@ -55,10 +55,11 @@ template fixture. When changing fix behavior, update the corresponding
 
 ## Releases
 
-Versioning is via [Changesets](https://github.com/changesets/changesets), not
-semantic-release. Add a changeset (`yarn changeset`) for any user-facing change;
-`.changeset/changelog.js` is a custom changelog formatter. `.github/workflows/release.yml`
-handles publishing to npm.
+Versioning is via [Changesets](https://github.com/changesets/changesets) through
+`opx release` (`@allons-y/opx-release`), not semantic-release. Add a changeset
+(`yarn changeset`) for any user-facing change; the changelog uses the opx format.
+`.github/workflows/release.yml` runs `opx release publish`, which publishes to npm, tags,
+and creates the GitHub release.
 
 ## Commits & pull requests
 

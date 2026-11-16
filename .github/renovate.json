@@ -17,10 +17,6 @@
 			"minimumReleaseAge": "1 month"
 		},
 		{
-			"groupName": "changesets ecosystem",
-			"matchPackageNames": ["@changesets/*"]
-		},
-		{
 			"description": "Hold changesets/action at v1: opx release bundles Changesets CLI 2, and action v2 needs CLI 3. Move both together when opx bundles CLI 3.",
 			"matchManagers": ["github-actions"],
 			"matchPackageNames": ["changesets/action"],

@@ -17,10 +17,10 @@
 			"minimumReleaseAge": "1 month"
 		},
 		{
+			"allowedVersions": "/^v?1(\\.\\d+){0,2}$/",
 			"description": "Hold changesets/action at v1: opx release bundles Changesets CLI 2, and action v2 needs CLI 3. Move both together when opx bundles CLI 3.",
 			"matchManagers": ["github-actions"],
-			"matchPackageNames": ["changesets/action"],
-			"allowedVersions": "/^v?1(\\.\\d+){0,2}$/"
+			"matchPackageNames": ["changesets/action"]
 		}
 	],
 	"rebaseWhen": "behind-base-branch",

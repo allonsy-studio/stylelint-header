@@ -37,7 +37,7 @@
 		"LICENSE"
 	],
 	"scripts": {
-		"changeset": "changeset",
+		"changeset": "opx release add",
 		"coverage": "yarn test --coverage --coverageReporters=cobertura",
 		"format": "yarn lint --fix",
 		"lint": "eslint --no-error-on-unmatched-pattern --no-warn-ignored --cache '**/*'",
@@ -45,8 +45,9 @@
 		"prepack": "pinst --disable",
 		"prepare": "husky && envoy || true",
 		"prepublish": "yarn test",
-		"release:version": "changeset version && node scripts/stamp-changelog-date.js",
+		"release": "opx release publish",
 		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+		"version": "opx release version && yarn install --mode update-lockfile",
 		"watch": "yarn test --watch"
 	},
 	"dependencies": {
@@ -58,8 +59,8 @@
 	},
 	"devDependencies": {
 		"@allons-y/envoy": "^1.1.0",
-		"@changesets/cli": "^2.31.1",
-		"@changesets/get-github-info": "^0.8.0",
+		"@allons-y/opx-cli": "^0.2.0",
+		"@allons-y/opx-release": "^0.1.1",
 		"@eslint/compat": "^1.4.1",
 		"@eslint/js": "^10.0.1",
 		"@eslint/json": "^1.2.0",

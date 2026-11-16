@@ -1,12 +1,12 @@
 {
-	"$schema": "https://unpkg.com/@changesets/config@3.1.4/schema.json",
-	"access": "public",
-	"baseBranch": "main",
-	"changelog": [
-		"./changelog.js",
-		{
-			"maintainers": ["castastrophe"],
-			"repo": "allonsy-studio/stylelint-header"
-		}
-	]
+  "$schema": "https://unpkg.com/@changesets/config@3.1.4/schema.json",
+  "access": "public",
+  "baseBranch": "main",
+  "changelog": [
+    "@allons-y/opx-release/changelog",
+    {
+      "releaseDate": true,
+      "repo": "allonsy-studio/stylelint-header"
+    }
+  ]
 }

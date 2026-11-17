@@ -69,8 +69,8 @@ and creates the GitHub release.
   focused; subject plus a short body is enough.
 - Never add AI attribution to a commit or a PR: no `Co-Authored-By` trailer, no
   "Generated with …" footer, no session URLs.
-- PRs are squash-merged with the PR title as the commit subject, so PR titles
-  must also follow Conventional Commits.
+- PRs are squash-merged with the PR title as the commit subject & the commit
+  messages as its body, so PR titles must also follow Conventional Commits.
 - Fill in `.github/PULL_REQUEST_TEMPLATE.md`: description, linked issue (PRs
   must relate to an open issue), how it was tested, and change-type checkboxes.
 

@@ -18,6 +18,7 @@ const messages = ruleMessages(ruleName, {
 
 const meta = {
 	url: "https://github.com/allonsy-studio/stylelint-header/blob/main/README.md",
+	fixable: true,
 };
 
 /**
@@ -106,29 +107,27 @@ const ruleFunction =
 
 		if (found) return;
 
-		if (context.fix) {
-			// Add the provided header to the top of the file
-			root.prepend({
-				text: header
-					.split("\n")
-					.map((line) => ` * ${line}`)
-					.join("\n"),
-				raws: {
-					left: isRemovable ? "\n" : "!\n",
-					right: "\n ",
-				},
-			});
-			// Put a few newlines between the comment and the first property
-			root.nodes[1].raws.before = context.newline + context.newline;
-		} else {
-			// Just report the issue
-			report({
-				ruleName: ruleName,
-				result: result,
-				message: messages.rejected,
-				node: root,
-			});
-		}
+		report({
+			ruleName: ruleName,
+			result: result,
+			message: messages.rejected,
+			node: root,
+			fix: () => {
+				// Add the provided header to the top of the file
+				root.prepend({
+					text: header
+						.split("\n")
+						.map((line) => ` * ${line}`)
+						.join("\n"),
+					raws: {
+						left: isRemovable ? "\n" : "!\n",
+						right: "\n ",
+					},
+				});
+				// Put a few newlines between the comment and the first property
+				root.nodes[1].raws.before = context.newline + context.newline;
+			},
+		});
 	};
 
 ruleFunction.ruleName = ruleName;

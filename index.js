@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from "fs";
-import { join } from "path";
+import { basename, dirname, join, relative, sep } from "path";
 
 import stylelint from "stylelint";
 import { compareTwoStrings } from "string-similarity";
@@ -71,11 +71,17 @@ const ruleFunction =
 		// Trim any comment tags from the string and remove whitespace
 		headerTemplate = headerTemplate.replace(/(\/\*|\*\/|(\s*\*))/g, "").trim();
 
+		// Stylelint doesn't expose the file on `context`; PostCSS records it
+		const file = root.source?.input?.file ?? result.opts?.from;
+
 		const getHeader = template(headerTemplate);
 		const header = getHeader({
 			YEAR: new Date().getFullYear(),
-			FILE_NAME: context.file?.basename,
-			FILE_PATH: context.file?.dirname,
+			FILE_NAME: file ? basename(file) : "",
+			// Relative with `/` separators so headers match across machines & OSes
+			FILE_PATH: file
+				? relative(process.cwd(), dirname(file)).split(sep).join("/") || "."
+				: "",
 			...(options.templateVariables ?? {}),
 		});
 

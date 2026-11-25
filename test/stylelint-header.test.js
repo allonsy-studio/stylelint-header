@@ -183,3 +183,47 @@ testRule({
 		},
 	],
 });
+
+/** @description Test cases for the built-in file variables */
+testRule({
+	plugins,
+	ruleName,
+	config: ["File: <%= FILE_NAME %> in <%= FILE_PATH %>"],
+	fix: true,
+
+	reject: [
+		{
+			description: "FILE_NAME and FILE_PATH resolve from the file location",
+			code: ".foo {\n\tposition: relative;\n}\n",
+			codeFilename: join(process.cwd(), "test", "nested", "a.css"),
+			fixed:
+				"/*!\n * File: a.css in test/nested\n */\n\n.foo {\n\tposition: relative;\n}\n",
+			message: messages.rejected,
+		},
+		{
+			description: "FILE_PATH is . for a file in the working directory",
+			code: ".foo {\n\tposition: relative;\n}\n",
+			codeFilename: join(process.cwd(), "a.css"),
+			fixed:
+				"/*!\n * File: a.css in .\n */\n\n.foo {\n\tposition: relative;\n}\n",
+			message: messages.rejected,
+		},
+	],
+});
+
+/** @description Test case for linting code without a file name */
+testRule({
+	plugins,
+	ruleName,
+	config: ["File: [<%= FILE_NAME %>] [<%= FILE_PATH %>]"],
+	fix: true,
+
+	reject: [
+		{
+			description: "FILE_NAME and FILE_PATH are empty without a file",
+			code: ".foo {\n\tposition: relative;\n}\n",
+			fixed: "/*!\n * File: [] []\n */\n\n.foo {\n\tposition: relative;\n}\n",
+			message: messages.rejected,
+		},
+	],
+});

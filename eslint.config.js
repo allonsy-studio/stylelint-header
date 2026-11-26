@@ -48,7 +48,12 @@ export default defineConfig([
 		plugins: { jest },
 		extends: ["jest/recommended"],
 		languageOptions: {
-			globals: jest.environments.globals.globals,
+			globals: {
+				...jest.environments.globals.globals,
+				// Assigned to `global` in the test file
+				testRule: "readonly",
+				testRuleConfigs: "readonly",
+			},
 		},
 	},
 	{

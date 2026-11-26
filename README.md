@@ -124,11 +124,13 @@ the resulting header becomes:
 
 `YEAR` was substituted automatically — it doesn't need to appear in `templateVariables`. The following variables are always available:
 
-| Variable    | Value                            |
-| ----------- | -------------------------------- |
-| `YEAR`      | The current year                 |
-| `FILE_NAME` | The basename of the linted file  |
-| `FILE_PATH` | The directory of the linted file |
+| Variable    | Value                                                                                                                             |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `YEAR`      | The current year                                                                                                                  |
+| `FILE_NAME` | The basename of the linted file                                                                                                   |
+| `FILE_PATH` | The directory of the linted file, relative to the working directory & always `/`-separated (`.` for the working directory itself) |
+
+`FILE_NAME` and `FILE_PATH` are empty when the code has no file name, such as stdin or `code` passed to stylelint without `codeFilename`.
 
 Templates use [`lodash.template`](https://lodash.com/docs/4.17.15#template) — see the lodash docs for the full syntax.
 

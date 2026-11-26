@@ -29,7 +29,12 @@ jobs:
           - 26
           - 24
         stylelint-version:
-          - 17
+          - 18
+        include:
+          # Quick compatibility check for the oldest supported stylelint
+          - system: ubuntu-latest
+            node-version: 24
+            stylelint-version: 17
     runs-on: ${{ matrix.system }}
     name: Stylelint v${{ matrix.stylelint-version }} | ${{ matrix.system }} | node v${{ matrix.node-version }}
     steps:

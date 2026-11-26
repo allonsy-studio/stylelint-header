@@ -55,7 +55,7 @@
 		"string-similarity": "4.0.4"
 	},
 	"peerDependencies": {
-		"stylelint": "18.x"
+		"stylelint": "17.x || 18.x"
 	},
 	"devDependencies": {
 		"@allons-y/envoy": "^1.1.0",

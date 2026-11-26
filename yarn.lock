@@ -90,7 +90,7 @@ __metadata:
     string-similarity: "npm:4.0.4"
     stylelint: "npm:18.1.0"
   peerDependencies:
-    stylelint: 18.x
+    stylelint: 17.x || 18.x
   languageName: unknown
   linkType: soft
 

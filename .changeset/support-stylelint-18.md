@@ -1,10 +1,9 @@
 ---
-"@allons-y/stylelint-header": major
+"@allons-y/stylelint-header": minor
 ---
 
-Require stylelint 18; drops support for stylelint 17. The `stylelint` peer
-dependency now requires 18.x, and the CI test matrix no longer runs against
-v17.
+Support stylelint 18. The `stylelint` peer dependency now accepts 17.x or 18.x.
+CI runs the full matrix on v18 and a compatibility check on v17.
 
 `--fix` now goes through the `fix` callback of stylelint's `report` utility
 instead of `context.fix`, which stylelint 18 removed. The rule also sets
